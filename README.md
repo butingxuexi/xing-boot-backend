@@ -15,7 +15,7 @@
 - Spring Boot 2.7
 - MySQL
 - Mybatis-plus
-- Mybaits-Plus-Join
+- Mybatis-Plus-Join
 - Swagger 接口文档
 - Hutool 、Mapstruct  等工具库
 
