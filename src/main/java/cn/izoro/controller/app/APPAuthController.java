@@ -2,7 +2,7 @@ package cn.izoro.controller.app;
 
 import cn.izoro.common.CommonResult;
 import cn.izoro.model.VO.LoginReqVO;
-import cn.izoro.model.VO.userRespVO;
+import cn.izoro.model.VO.UserRespVO;
 import cn.izoro.model.VO.RegisterReqVO;
 import cn.izoro.service.SystemUsersService;
 import org.springframework.validation.annotation.Validated;
@@ -24,8 +24,8 @@ public class APPAuthController {
     @Resource
     private SystemUsersService SystemUsersService;
     @PostMapping("/login")
-    public CommonResult<userRespVO> login(@Validated @RequestBody LoginReqVO authLoginReqVO, HttpServletRequest request) {
-        userRespVO authLoginRespVO = SystemUsersService.login(authLoginReqVO,request);
+    public CommonResult<UserRespVO> login(@Validated @RequestBody LoginReqVO authLoginReqVO, HttpServletRequest request) {
+        UserRespVO authLoginRespVO = SystemUsersService.login(authLoginReqVO,request);
         return CommonResult.success(authLoginRespVO);
     }
 

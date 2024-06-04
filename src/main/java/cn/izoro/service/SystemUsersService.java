@@ -1,7 +1,7 @@
 package cn.izoro.service;
 
 import cn.izoro.model.VO.LoginReqVO;
-import cn.izoro.model.VO.userRespVO;
+import cn.izoro.model.VO.UserRespVO;
 import cn.izoro.model.VO.RegisterReqVO;
 import cn.izoro.model.dataobject.SystemUser;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -18,7 +18,7 @@ public interface SystemUsersService extends IService<SystemUser> {
      * @param authLoginReqVO
      * @return
      */
-    userRespVO login(LoginReqVO authLoginReqVO, HttpServletRequest request);
+    UserRespVO login(LoginReqVO authLoginReqVO, HttpServletRequest request);
 
     /**
      * 用户注册
@@ -28,4 +28,11 @@ public interface SystemUsersService extends IService<SystemUser> {
     Long register( RegisterReqVO authLoginReqVO);
 
     Boolean logout(HttpServletRequest request);
+
+    /**
+     * 获取登录用户
+     * @param request
+     * @return
+     */
+    UserRespVO getLoginUser(HttpServletRequest request);
 }

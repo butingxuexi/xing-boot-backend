@@ -1,6 +1,6 @@
 package cn.izoro.convert;
 
-import cn.izoro.model.VO.userRespVO;
+import cn.izoro.model.VO.UserRespVO;
 import cn.izoro.model.dataobject.SystemUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +14,7 @@ public class ConvertTest {
     public void test() {
         SystemUser systemUser = new SystemUser();
         systemUser.setNickname("不相信");
-        userRespVO authLoginRespVO = SystemUserConvert.INSTANCE.toRespVO(systemUser);
+        UserRespVO authLoginRespVO = SystemUserConvert.INSTANCE.toRespVO(systemUser);
         System.out.println(systemUser);
     }
 }

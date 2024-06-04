@@ -37,6 +37,7 @@ public interface ServiceErrorCodeRange {
     ErrorCode USER_MOBILE_NOT_EXISTS = new ErrorCode(1_001_001_001, "手机号未注册用户");
     ErrorCode USER_MOBILE_USED = new ErrorCode(1_001_001_002, "修改手机失败，该手机号({})已经被使用");
     ErrorCode USER_POINT_NOT_ENOUGH = new ErrorCode(1_001_001_003, "用户积分余额不足");
+    ErrorCode USER_NOT_LOGIN = new ErrorCode(1_001_001_003, "用户未登录");
 
     // ========== AUTH 模块 1-004-003-000 ==========
     ErrorCode AUTH_LOGIN_BAD_CREDENTIALS = new ErrorCode(1_001_003_000, "登录失败，账号密码不正确");

@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class userRespVO {
+public class UserRespVO {
     /**
      * 用户ID
      */
