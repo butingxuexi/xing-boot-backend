@@ -1,8 +1,8 @@
 package cn.izoro.convert;
 
-import cn.izoro.model.VO.UserRespVO;
-import cn.izoro.model.VO.RegisterReqVO;
-import cn.izoro.model.dataobject.SystemUser;
+import cn.izoro.model.entity.SystemUserDO;
+import cn.izoro.model.vo.login.UserRespVO;
+import cn.izoro.model.vo.login.RegisterReqVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -13,7 +13,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface SystemUserConvert {
     SystemUserConvert INSTANCE = Mappers.getMapper(SystemUserConvert.class);
-    UserRespVO toRespVO(SystemUser systemUser);
+    UserRespVO toRespVO(SystemUserDO systemUserDO);
 
-    SystemUser toDO(RegisterReqVO authLoginReqVO);
+    SystemUserDO toDO(RegisterReqVO authLoginReqVO);
 }

@@ -5,10 +5,10 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.izoro.convert.SystemUserConvert;
 import cn.izoro.enums.GlobalErrorCodeConstants;
 import cn.izoro.mapper.SystemUsersMapper;
-import cn.izoro.model.VO.LoginReqVO;
-import cn.izoro.model.VO.RegisterReqVO;
-import cn.izoro.model.VO.UserRespVO;
-import cn.izoro.model.dataobject.SystemUser;
+import cn.izoro.model.entity.SystemUserDO;
+import cn.izoro.model.vo.login.LoginReqVO;
+import cn.izoro.model.vo.login.RegisterReqVO;
+import cn.izoro.model.vo.login.UserRespVO;
 import cn.izoro.service.SystemUsersService;
 import cn.izoro.utill.mybatis.QueryWrapperX;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -28,7 +28,7 @@ import static cn.izoro.utill.exception.ServiceExceptionUtil.exception;
  */
 @Service
 @Slf4j
-public class SystemUsersServiceImpl extends ServiceImpl<SystemUsersMapper, SystemUser>
+public class SystemUsersServiceImpl extends ServiceImpl<SystemUsersMapper, SystemUserDO>
         implements SystemUsersService {
     /**
      * 盐值，混淆密码
@@ -41,19 +41,19 @@ public class SystemUsersServiceImpl extends ServiceImpl<SystemUsersMapper, Syste
         String encryptPassword = DigestUtils.md5DigestAsHex((SALT + authLoginReqVO.getPassword()).getBytes());
 
         // 查询用户是否存在
-        QueryWrapperX<SystemUser> queryWrapperX = new QueryWrapperX<>();
+        QueryWrapperX<SystemUserDO> queryWrapperX = new QueryWrapperX<>();
         queryWrapperX.eq("username", authLoginReqVO.getUsername())
                 .eq("password", encryptPassword);
-        SystemUser systemUser = this.baseMapper.selectOne(queryWrapperX);
+        SystemUserDO systemUserDO = this.baseMapper.selectOne(queryWrapperX);
 
-        if (ObjectUtil.isNotEmpty(systemUser)) {
+        if (ObjectUtil.isNotEmpty(systemUserDO)) {
             throw exception(AUTH_LOGIN_BAD_CREDENTIALS);
         }
 
         // 设置登录状态
-        request.getSession().setAttribute(USER_LOGIN_STATE, systemUser);
+        request.getSession().setAttribute(USER_LOGIN_STATE, systemUserDO);
 
-        return SystemUserConvert.INSTANCE.toRespVO(systemUser);
+        return SystemUserConvert.INSTANCE.toRespVO(systemUserDO);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class SystemUsersServiceImpl extends ServiceImpl<SystemUsersMapper, Syste
             throw exception(GlobalErrorCodeConstants.BAD_REQUEST, "两次输入的密码不一致");
         }
         // 数据库中是否已经有相同的用户名
-        QueryWrapper<SystemUser> wrapper = new QueryWrapper<>();
+        QueryWrapper<SystemUserDO> wrapper = new QueryWrapper<>();
         wrapper.eq("username", registerReqVO.getUsername());
         Long count = this.baseMapper.selectCount(wrapper);
         if (count > 0) {
@@ -72,14 +72,14 @@ public class SystemUsersServiceImpl extends ServiceImpl<SystemUsersMapper, Syste
 
         // 密码加密
         String encryptPassword = DigestUtils.md5DigestAsHex((SALT + registerReqVO.getPassword()).getBytes());
-        SystemUser systemUser = SystemUserConvert.INSTANCE.toDO(registerReqVO);
-        systemUser.setPassword(encryptPassword);
-        systemUser.setNickname(systemUser.getUsername());
-        int insert = this.baseMapper.insert(systemUser);
+        SystemUserDO systemUserDO = SystemUserConvert.INSTANCE.toDO(registerReqVO);
+        systemUserDO.setPassword(encryptPassword);
+        systemUserDO.setNickname(systemUserDO.getUsername());
+        int insert = this.baseMapper.insert(systemUserDO);
         if (insert <= 0) {
             throw exception(AUTH_USERNAME_USED);
         }
-        return systemUser.getId();
+        return systemUserDO.getId();
 
     }
 
@@ -107,7 +107,7 @@ public class SystemUsersServiceImpl extends ServiceImpl<SystemUsersMapper, Syste
         }
         // 从数据库查询（追求性能的话可以注释，直接走缓存）
         long userId = currentUser.getId();
-        SystemUser userDOById = this.getById(userId);
+        SystemUserDO userDOById = this.getById(userId);
         currentUser = SystemUserConvert.INSTANCE.toRespVO(userDOById);
         if (currentUser == null) {
             throw exception(USER_NOT_EXISTS);

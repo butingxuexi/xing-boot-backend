@@ -1,4 +1,4 @@
-package cn.izoro.model.VO;
+package cn.izoro.model.vo.login;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;

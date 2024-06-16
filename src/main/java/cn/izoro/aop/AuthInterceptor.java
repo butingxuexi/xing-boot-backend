@@ -2,7 +2,7 @@ package cn.izoro.aop;
 
 import cn.izoro.annotation.AuthCheck;
 import cn.izoro.enums.UserRoleEnum;
-import cn.izoro.model.VO.UserRespVO;
+import cn.izoro.model.vo.login.UserRespVO;
 import cn.izoro.service.SystemUsersService;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;

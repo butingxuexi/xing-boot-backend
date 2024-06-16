@@ -1,6 +1,6 @@
 package cn.izoro.aop;
 
-import cn.izoro.model.VO.UserRespVO;
+import cn.izoro.model.vo.login.UserRespVO;
 import cn.izoro.service.SystemUsersService;
 import cn.izoro.utill.ThreadLocalUtil;
 import org.aspectj.lang.ProceedingJoinPoint;

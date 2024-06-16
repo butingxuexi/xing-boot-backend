@@ -1,9 +1,9 @@
 package cn.izoro.controller.app;
 
 import cn.izoro.common.CommonResult;
-import cn.izoro.model.VO.LoginReqVO;
-import cn.izoro.model.VO.UserRespVO;
-import cn.izoro.model.VO.RegisterReqVO;
+import cn.izoro.model.vo.login.LoginReqVO;
+import cn.izoro.model.vo.login.UserRespVO;
+import cn.izoro.model.vo.login.RegisterReqVO;
 import cn.izoro.service.SystemUsersService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,9 +1,9 @@
 package cn.izoro.service;
 
-import cn.izoro.model.VO.LoginReqVO;
-import cn.izoro.model.VO.UserRespVO;
-import cn.izoro.model.VO.RegisterReqVO;
-import cn.izoro.model.dataobject.SystemUser;
+import cn.izoro.model.vo.login.LoginReqVO;
+import cn.izoro.model.vo.login.UserRespVO;
+import cn.izoro.model.vo.login.RegisterReqVO;
+import cn.izoro.model.entity.SystemUserDO;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
 * @author zoro
 */
-public interface SystemUsersService extends IService<SystemUser> {
+public interface SystemUsersService extends IService<SystemUserDO> {
 
     /**
      * 用户登录

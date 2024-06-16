@@ -1,7 +1,7 @@
 package cn.izoro.utill;
 
 import cn.izoro.enums.GlobalErrorCodeConstants;
-import cn.izoro.model.VO.UserRespVO;
+import cn.izoro.model.vo.login.UserRespVO;
 import cn.izoro.utill.exception.ServiceExceptionUtil;
 
 /**

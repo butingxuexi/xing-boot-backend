@@ -1,4 +1,4 @@
-package cn.izoro.model.VO;
+package cn.izoro.model.vo.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

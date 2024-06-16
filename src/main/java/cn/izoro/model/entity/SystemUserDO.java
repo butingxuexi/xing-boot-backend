@@ -1,12 +1,7 @@
-package cn.izoro.model.dataobject;
+package cn.izoro.model.entity;
 
 import cn.izoro.common.BaseDO;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
 /**
@@ -15,7 +10,7 @@ import lombok.Data;
  */
 @TableName(value ="system_users")
 @Data
-public class SystemUser extends BaseDO {
+public class SystemUserDO extends BaseDO {
     /**
      * 用户ID
      */
