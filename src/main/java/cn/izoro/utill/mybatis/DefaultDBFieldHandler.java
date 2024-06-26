@@ -4,6 +4,7 @@ import cn.izoro.common.BaseDO;
 import cn.izoro.utill.ThreadLocalUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -14,6 +15,7 @@ import java.util.Objects;
  * 如果没有显式的对通用参数进行赋值，这里会对通用参数进行填充、赋值
  *
  */
+@Component
 public class DefaultDBFieldHandler implements MetaObjectHandler {
 
     @Override

@@ -75,6 +75,8 @@ public class SystemUsersServiceImpl extends ServiceImpl<SystemUsersMapper, Syste
         SystemUserDO systemUserDO = SystemUserConvert.INSTANCE.toDO(registerReqVO);
         systemUserDO.setPassword(encryptPassword);
         systemUserDO.setNickname(systemUserDO.getUsername());
+        systemUserDO.setCreator("register");
+        systemUserDO.setUpdater("register");
         int insert = this.baseMapper.insert(systemUserDO);
         if (insert <= 0) {
             throw exception(AUTH_USERNAME_USED);
